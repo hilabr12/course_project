@@ -6,8 +6,12 @@ def is_odd_number(word: str) -> bool:
 
 
 def is_word_sorted_in_alphabetical_order(word: str) -> bool:
-    is_sorted = all([word[i] <= word[i+1] for i in range(len(word) - 1)])
+    is_sorted = all([word[i] <= word[i + 1] for i in range(len(word) - 1)])
     return is_sorted
+
+
+def is_palindrom(word: str) -> bool:
+    return word == word[::-1]
 
 
 def is_sorted_polyndrom(word: str) -> bool:
@@ -20,12 +24,10 @@ def is_sorted_polyndrom(word: str) -> bool:
         first_sliced_word += remaining_char
         second_sliced_word += remaining_char
 
-    if is_word_sorted_in_alphabetical_order(first_sliced_word):
-        if is_word_sorted_in_alphabetical_order(second_sliced_word):
-            if first_sliced_word == second_sliced_word:
-                return True
-    return False
+    return is_palindrom(word) and is_word_sorted_in_alphabetical_order(
+        first_sliced_word) and is_word_sorted_in_alphabetical_order(second_sliced_word)
 
 
 print(is_sorted_polyndrom("abcdcba"))
 print(is_sorted_polyndrom("AbcdCbA"))
+print(is_sorted_polyndrom("bab"))

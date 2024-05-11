@@ -12,9 +12,9 @@ def pythagorean_triplet_by_sum(sum_triplet: int) -> None:
             b += 1
         a += 1
 
-
-pythagorean_triplet_by_sum(12)
-pythagorean_triplet_by_sum(30)
-pythagorean_triplet_by_sum(40)
-pythagorean_triplet_by_sum(56)
-pythagorean_triplet_by_sum(24)
+if __name__ == '__main__':
+    pythagorean_triplet_by_sum(12)
+    pythagorean_triplet_by_sum(30)
+    pythagorean_triplet_by_sum(40)
+    pythagorean_triplet_by_sum(56)
+    pythagorean_triplet_by_sum(24)

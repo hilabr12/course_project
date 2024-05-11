@@ -28,6 +28,7 @@ def is_sorted_palindrome(word: str) -> bool:
         first_sliced_word) and is_word_sorted_in_alphabetical_order(second_sliced_word)
 
 
-print(is_sorted_palindrome("abcdcba"))
-print(is_sorted_palindrome("AbcdCbA"))
-print(is_sorted_palindrome("bab"))
+if __name__ == '__main__':
+    print(is_sorted_palindrome("abcdcba"))
+    print(is_sorted_palindrome("AbcdCbA"))
+    print(is_sorted_palindrome("bab"))

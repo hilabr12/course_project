@@ -10,11 +10,11 @@ def is_word_sorted_in_alphabetical_order(word: str) -> bool:
     return is_sorted
 
 
-def is_palindrom(word: str) -> bool:
+def is_palindrome(word: str) -> bool:
     return word == word[::-1]
 
 
-def is_sorted_polyndrom(word: str) -> bool:
+def is_sorted_palindrome(word: str) -> bool:
     half_length_of_word = len(word) // 2
     first_sliced_word: str = word[:half_length_of_word]
     second_sliced_word: str = word[half_length_of_word + 1:][::-1]
@@ -24,10 +24,10 @@ def is_sorted_polyndrom(word: str) -> bool:
         first_sliced_word += remaining_char
         second_sliced_word += remaining_char
 
-    return is_palindrom(word) and is_word_sorted_in_alphabetical_order(
+    return is_palindrome(word) and is_word_sorted_in_alphabetical_order(
         first_sliced_word) and is_word_sorted_in_alphabetical_order(second_sliced_word)
 
 
-print(is_sorted_polyndrom("abcdcba"))
-print(is_sorted_polyndrom("AbcdCbA"))
-print(is_sorted_polyndrom("bab"))
+print(is_sorted_palindrome("abcdcba"))
+print(is_sorted_palindrome("AbcdCbA"))
+print(is_sorted_palindrome("bab"))

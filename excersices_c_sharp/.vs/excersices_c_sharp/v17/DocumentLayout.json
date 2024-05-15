@@ -3,12 +3,22 @@
   "WorkspaceRootPath": "C:\\repos\\excersices_c_sharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|excersices_c_sharp||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +28,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "excersices_c_sharp",
+              "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\excersices_c_sharp.csproj",
+              "RelativeDocumentMoniker": "excersices_c_sharp\\excersices_c_sharp.csproj",
+              "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\excersices_c_sharp.csproj",
+              "RelativeToolTip": "excersices_c_sharp\\excersices_c_sharp.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-15T06:53:10.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LinkedList.cs",
+              "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\LinkedList.cs",
+              "RelativeDocumentMoniker": "excersices_c_sharp\\LinkedList.cs",
+              "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\LinkedList.cs",
+              "RelativeToolTip": "excersices_c_sharp\\LinkedList.cs",
+              "ViewState": "AQIAAKgAAAAAAAAAAAAowKkAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-12T16:36:04.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Node.cs",
               "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Node.cs",
               "RelativeDocumentMoniker": "excersices_c_sharp\\Node.cs",
               "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Node.cs",
               "RelativeToolTip": "excersices_c_sharp\\Node.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-12T16:28:17.908Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Program.cs",
               "RelativeDocumentMoniker": "excersices_c_sharp\\Program.cs",

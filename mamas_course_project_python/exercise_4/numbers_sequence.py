@@ -26,8 +26,5 @@ class Numbers:
         return sum(1 for number in self.numbers if number > 0)
 
     def get_sorted_numbers(self) -> list[int]:
-        self.numbers.sort()
-        return self.numbers
-
-
+        return sorted(self.numbers)
 

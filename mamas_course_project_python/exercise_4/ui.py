@@ -12,11 +12,10 @@ class Application(tk.Tk):
         self.numbers: Numbers = numbers
         self.create_widgets()
 
-
     def create_widgets(self):
-        avg = self.numbers.get_average()
-        positive_count = self.numbers.get_amount_of_positive_numbers()
-        sorted_list = self.numbers.get_sorted_numbers()
+        avg: float = self.numbers.get_average()
+        positive_count: int = self.numbers.get_amount_of_positive_numbers()
+        sorted_list: list[int] = self.numbers.get_sorted_numbers()
 
         result_label = tk.Label(self, text=f"The average of numbers is: {avg} {NEW_LINE}"
                                            f"There are {positive_count} positive numbers{NEW_LINE} "

@@ -10,6 +10,9 @@ namespace excersices_c_sharp
     {
         static void Main(string[] args)
         {
+            NumericalExpression n = new NumericalExpression(999999999);
+            string result = n.ToString();
+            Console.WriteLine(result);
         }
     }
 }

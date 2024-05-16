@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="logic\Board.cs" />
     <Compile Include="logic\Cell.cs" />
+    <Compile Include="logic\Direction.cs" />
     <Compile Include="logic\Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

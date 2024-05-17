@@ -1,4 +1,6 @@
-﻿namespace _2048.logic
+﻿using System;
+
+namespace _2048.logic
 {
     public class Cell
     {
@@ -13,6 +15,9 @@
         public const int EMPTY_CELL = 0;
 
         public const int WINNING_CELL = 2048;
+
+        public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
+
 
         public Cell(int value, int row, int column)
         {
@@ -45,6 +50,8 @@
         {
             return Row + 1 <= BOARD_SIZE_ROW - 1;
         }
+        
+
 
     }
 }

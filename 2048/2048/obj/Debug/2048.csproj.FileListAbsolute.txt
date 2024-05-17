@@ -1,0 +1,7 @@
+C:\repos\2048\2048\bin\Debug\2048.exe.config
+C:\repos\2048\2048\bin\Debug\2048.exe
+C:\repos\2048\2048\bin\Debug\2048.pdb
+C:\repos\2048\2048\obj\Debug\2048.csproj.AssemblyReference.cache
+C:\repos\2048\2048\obj\Debug\2048.csproj.CoreCompileInputs.cache
+C:\repos\2048\2048\obj\Debug\2048.exe
+C:\repos\2048\2048\obj\Debug\2048.pdb

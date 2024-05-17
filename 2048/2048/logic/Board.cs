@@ -114,16 +114,16 @@ namespace _2048.logic
             switch (direction)
             {
                 case Direction.Up:
-                    pointsEarned = MoveTiles(-1, 0);
+                    pointsEarned = MoveTilesLeft(-1, 0);
                     break;
                 case Direction.Down:
-                    pointsEarned = MoveTiles(1, 0);
+                    pointsEarned = MoveTilesLeft(1, 0);
                     break;
                 case Direction.Left:
                     pointsEarned = MoveTilesLeft(0, -1);
                     break;
                 case Direction.Right:
-                    pointsEarned = MoveTiles(0, 1);
+                    pointsEarned = MoveTilesLeft(0, 1);
                     break;
             }
             
@@ -136,11 +136,30 @@ namespace _2048.logic
 
             for (int row = 0; row < Data.GetLength(0); row++)
             {
-                for (int column = BOARD_SIZE_COLUMN-1; column >= 0 ; column--)
+                for (int column = BOARD_SIZE_COLUMN-1;  column >= 0 ; column--)
                 {
-                    if (!Data[row, column].IsEmpty())
+                    if (!Data[row, column].IsEmpty()) 
                     {
-                        pointsEarned += MoveTileAndMerge(row, column, rowLocationChange, columnLocationChange);
+                        int newRow = row;
+                        int newColumn = column;
+                        int counterMoves = 0;
+                        // Looping until the next checked cell is valid and either empty or equal to the current cell
+                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
+                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
+                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        {
+                            newRow += rowLocationChange;
+                            newColumn += columnLocationChange;
+                            counterMoves++;
+                            if(Data[newRow, newColumn].Value == Data[row, column].Value)
+                            {
+                                break;
+                            }
+
+                        }
+
+                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
+                        column -= counterMoves;
                     }
                 }
             }
@@ -152,42 +171,10 @@ namespace _2048.logic
         }
 
 
-        private int MoveTiles(int rowLocationChange, int columnLocationChange)
+        private int MoveTileAndMerge(int row, int column, int newRow, int newColumn)
         {
+
             int pointsEarned = 0;
-
-            for (int row = 0; row < Data.GetLength(0); row++)
-            {
-                for (int column = 0; column < Data.GetLength(1); column++)
-                {
-                    if (!Data[row, column].IsEmpty())
-                    {
-                        pointsEarned += MoveTileAndMerge(row, column, rowLocationChange, columnLocationChange);
-                    }
-                }
-            }
-            // adding new random cell
-            AddRandomNumber();
-            // after making changes in the board, update the emptyCells list 
-            EmptyCells = GetAllEmptyCells();
-            
-            return pointsEarned;
-        }
-
-        private int MoveTileAndMerge(int row, int column, int rowLocationChange, int columnLocationChange)
-        {
-            int pointsEarned = 0;
-            int newRow = row;
-            int newColumn = column;
-
-            // Looping until the next checked cell is valid and either empty or equal to the current cell
-            while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
-                   (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
-                    Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
-            {
-                newRow += rowLocationChange;
-                newColumn += columnLocationChange;
-            }
 
             // If the new position is different from the current position
             if (newRow != row || newColumn != column)

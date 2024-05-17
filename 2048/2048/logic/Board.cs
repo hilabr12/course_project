@@ -151,13 +151,11 @@ namespace _2048.logic
                             newRow += rowLocationChange;
                             newColumn += columnLocationChange;
                             counterMoves++;
-                            if(Data[newRow, newColumn].Value == Data[row, column].Value)
+                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
                             {
                                 break;
                             }
-
                         }
-
                         pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
                         column -= counterMoves;
                     }

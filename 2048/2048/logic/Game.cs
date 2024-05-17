@@ -3,7 +3,7 @@
     public class Game
     {
         internal  Board Board { get; set; }
-        private GameStatus Status { get; set; }
+        public GameStatus Status { get; set; }
         public int Points { get; protected set ; }
 
         public Game()

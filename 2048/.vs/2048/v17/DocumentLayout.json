@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\repos\\2048\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|c:\\repos\\2048\\2048\\logic\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|c:\\repos\\2048\\2048\\ui\\consolegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\ui\\consolegame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|C:\\repos\\2048\\2048\\logic\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +15,16 @@
       "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\gamestatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|C:\\repos\\2048\\2048\\logic\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|c:\\repos\\2048\\2048\\logic\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|C:\\repos\\2048\\2048\\logic\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|C:\\repos\\2048\\2048\\logic\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|solutionrelative:2048\\logic\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{164079F7-6D6C-4989-B2F7-99D7D0CAF309}|2048\\2048.csproj|C:\\repos\\2048\\2048\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,8 +38,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleGame.cs",
+              "DocumentMoniker": "C:\\repos\\2048\\2048\\ui\\ConsoleGame.cs",
+              "RelativeDocumentMoniker": "2048\\ui\\ConsoleGame.cs",
+              "ToolTip": "C:\\repos\\2048\\2048\\ui\\ConsoleGame.cs",
+              "RelativeToolTip": "2048\\ui\\ConsoleGame.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwB4AAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-17T13:48:59.278Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -44,7 +61,7 @@
               "RelativeDocumentMoniker": "2048\\logic\\GameStatus .cs",
               "ToolTip": "C:\\repos\\2048\\2048\\logic\\GameStatus .cs",
               "RelativeToolTip": "2048\\logic\\GameStatus .cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAUAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAA6wAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-16T18:29:24.466Z",
               "EditorCaption": ""
@@ -57,13 +74,14 @@
               "RelativeDocumentMoniker": "2048\\logic\\Direction.cs",
               "ToolTip": "C:\\repos\\2048\\2048\\logic\\Direction.cs",
               "RelativeToolTip": "2048\\logic\\Direction.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T18:23:20.498Z"
+              "WhenOpened": "2024-05-16T18:23:20.498Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Cell.cs",
               "DocumentMoniker": "C:\\repos\\2048\\2048\\logic\\Cell.cs",
               "RelativeDocumentMoniker": "2048\\logic\\Cell.cs",
@@ -71,18 +89,17 @@
               "RelativeToolTip": "2048\\logic\\Cell.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAAAgwC8AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T17:29:16.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-16T17:29:16.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Board.cs",
               "DocumentMoniker": "C:\\repos\\2048\\2048\\logic\\Board.cs",
               "RelativeDocumentMoniker": "2048\\logic\\Board.cs",
               "ToolTip": "C:\\repos\\2048\\2048\\logic\\Board.cs",
               "RelativeToolTip": "2048\\logic\\Board.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAAwGYAAAArAAAA",
+              "ViewState": "AQIAAK8AAAAAAAAAAAAqwJIAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-16T17:09:40.297Z",
               "EditorCaption": ""
@@ -95,14 +112,14 @@
               "RelativeDocumentMoniker": "2048\\logic\\Game.cs",
               "ToolTip": "C:\\repos\\2048\\2048\\logic\\Game.cs",
               "RelativeToolTip": "2048\\logic\\Game.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBkAAAAsAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAA1wA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-16T17:09:12.388Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\repos\\2048\\2048\\Program.cs",
               "RelativeDocumentMoniker": "2048\\Program.cs",

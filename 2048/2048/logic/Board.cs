@@ -125,6 +125,7 @@ namespace _2048.logic
                     pointsEarned = MoveTiles(1, 0);
                     break;
             }
+            
             return pointsEarned;
         }
 
@@ -142,6 +143,11 @@ namespace _2048.logic
                     }
                 }
             }
+            // adding new random cell
+            AddRandomNumber();
+            // after making changes in the board, update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
+            
             return pointsEarned;
         }
 
@@ -200,9 +206,6 @@ namespace _2048.logic
             }
             return false;
         }
-
-
-
 
     }
 }

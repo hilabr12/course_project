@@ -18,7 +18,7 @@ public class ConsoleGame
         {
             for (int col = 0; col < Board.BOARD_SIZE_COLUMN; col++)
             {
-                Console.Write(boardData[row,col].ToString() + " ");
+                Console.Write(boardData[row,col].Value.ToString() + " ");
             }
             Console.WriteLine("");
         }
@@ -46,7 +46,7 @@ public class ConsoleGame
         return Direction.Right;
     }
 
-    public void Run()
+    public void Play()
     {
         while (_game.Status == GameStatus.Idle)
         {

@@ -21,10 +21,14 @@
                 Points += pointsEarned;
 
                 //checking if the player won
-                if (Board.IsThereAWinningCell())
+                if(Points > Cell.WINNING_CELL)
                 {
-                    Status = GameStatus.Win;
+                    if (Board.IsThereAWinningCell())
+                    {
+                        Status = GameStatus.Win;
+                    }
                 }
+                
                 // checking of the player lost 
                 else if(!Board.AreThereAnyEmptyCells())
                 {

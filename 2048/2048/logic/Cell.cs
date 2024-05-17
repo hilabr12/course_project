@@ -34,11 +34,7 @@ namespace _2048.logic
         {
             return Value == EMPTY_CELL;
         }
-        
-        public bool IsValidPosition()
-        {
-            return Row >= 0 && Row < BOARD_SIZE_ROW && Column >= 0 && Column < BOARD_SIZE_COLUMN;
-        }
+       
         
         public void MakeEmpty()
         {

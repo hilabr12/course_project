@@ -8,7 +8,8 @@ namespace _2048
     {
         static void Main(string[] args)
         {
-            Board b = new Board();
+            ConsoleGame game = new ConsoleGame();
+            game.Play();
         }
     }
 }

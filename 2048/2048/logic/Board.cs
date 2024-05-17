@@ -17,6 +17,7 @@ namespace _2048.logic
         public Cell[,] Data { get; protected set; }
 
         public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
+
         
         public List<Cell> EmptyCells { get; protected set; }
 
@@ -113,21 +114,43 @@ namespace _2048.logic
             switch (direction)
             {
                 case Direction.Up:
-                    pointsEarned = MoveTiles(0, -1);
-                    break;
-                case Direction.Down:
-                    pointsEarned = MoveTiles(0, 1);
-                    break;
-                case Direction.Left:
                     pointsEarned = MoveTiles(-1, 0);
                     break;
-                case Direction.Right:
+                case Direction.Down:
                     pointsEarned = MoveTiles(1, 0);
+                    break;
+                case Direction.Left:
+                    pointsEarned = MoveTilesLeft(0, -1);
+                    break;
+                case Direction.Right:
+                    pointsEarned = MoveTiles(0, 1);
                     break;
             }
             
             return pointsEarned;
         }
+
+        private int MoveTilesLeft(int rowLocationChange, int columnLocationChange)
+        {
+            int pointsEarned = 0;
+
+            for (int row = 0; row < Data.GetLength(0); row++)
+            {
+                for (int column = BOARD_SIZE_COLUMN-1; column >= 0 ; column--)
+                {
+                    if (!Data[row, column].IsEmpty())
+                    {
+                        pointsEarned += MoveTileAndMerge(row, column, rowLocationChange, columnLocationChange);
+                    }
+                }
+            }
+            // adding new random cell
+            AddRandomNumber();
+            // after making changes in the board, update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
+            return pointsEarned;
+        }
+
 
         private int MoveTiles(int rowLocationChange, int columnLocationChange)
         {
@@ -157,40 +180,40 @@ namespace _2048.logic
             int newRow = row;
             int newColumn = column;
 
-            // getting the next checked cell
-            Cell nextCheckedCell = Data[newRow + rowLocationChange, newColumn + columnLocationChange];
-
             // Looping until the next checked cell is valid and either empty or equal to the current cell
-            while (nextCheckedCell.IsValidPosition() && (nextCheckedCell.IsEmpty() || nextCheckedCell == Data[row, column]))
+            while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
+                   (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
+                    Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
             {
                 newRow += rowLocationChange;
                 newColumn += columnLocationChange;
-                nextCheckedCell = Data[newRow + rowLocationChange, newColumn + columnLocationChange];
             }
 
             // If the new position is different from the current position
-            if (newRow != row|| newColumn != column)
+            if (newRow != row || newColumn != column)
             {
-                //Merging if the value of the new cell is equa to the value of the current cell
+                //Merging if the value of the new cell is equal to the value of the current cell
                 if (Data[newRow, newColumn].Value == Data[row, column].Value)
                 {
                     Data[newRow, newColumn].MergeValue();
                     Data[row, column].MakeEmpty();
                     pointsEarned += Data[newRow, newColumn].Value;
-
                 }
-
                 else
                 {
                     // if the values are not equal
                     // moving the current cell to the new position
-                    Data[newRow, newColumn] = Data[row, column];
+                    Data[newRow, newColumn].Value = Data[row, column].Value;
                     Data[row, column].MakeEmpty();
                 }
             }
             return pointsEarned;
         }
 
+        public bool IsValidPosition(int row, int column)
+        {
+            return row >= 0 && row < BOARD_SIZE_ROW && column >= 0 && column < BOARD_SIZE_COLUMN;
+        }
         public bool IsThereAWinningCell()
         {
             for (int row = 0; row < Data.GetLength(0); row++)

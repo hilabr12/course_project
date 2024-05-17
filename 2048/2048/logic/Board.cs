@@ -114,19 +114,134 @@ namespace _2048.logic
             switch (direction)
             {
                 case Direction.Up:
-                    pointsEarned = MoveTilesLeft(-1, 0);
+                    pointsEarned = MoveTilesUp(-1, 0);
                     break;
                 case Direction.Down:
-                    pointsEarned = MoveTilesLeft(1, 0);
+                    pointsEarned = MoveTilesDown(1, 0);
                     break;
                 case Direction.Left:
                     pointsEarned = MoveTilesLeft(0, -1);
                     break;
                 case Direction.Right:
-                    pointsEarned = MoveTilesLeft(0, 1);
+                    pointsEarned = MoveTilesRight(0, 1);
                     break;
             }
             
+            return pointsEarned;
+        }
+
+
+        private int MoveTilesUp(int rowLocationChange, int columnLocationChange)
+        {
+            int pointsEarned = 0;
+
+            for (int column = BOARD_SIZE_COLUMN - 1; column >= 0; column--)
+            {
+                for (int row = BOARD_SIZE_ROW - 1; row >= 0; row--)
+                {
+                    if (!Data[row, column].IsEmpty())
+                    {
+                        int newRow = row;
+                        int newColumn = column;
+                        int counterMoves = 0;
+                        // Looping until the next checked cell is valid and either empty or equal to the current cell
+                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
+                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
+                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        {
+                            newRow += rowLocationChange;
+                            newColumn += columnLocationChange;
+                            counterMoves++;
+                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
+                            {
+                                break;
+                            }
+                        }
+                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
+                        row -= counterMoves;
+                    }
+                }
+            }
+            // adding new random cell
+            AddRandomNumber();
+            // after making changes in the board, update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
+            return pointsEarned;
+        }
+
+        private int MoveTilesDown(int rowLocationChange, int columnLocationChange)
+        {
+            int pointsEarned = 0;
+
+            for (int column = 0; column < BOARD_SIZE_COLUMN; column++)
+            {
+                for (int row = 0; row < BOARD_SIZE_ROW; row++)
+                {
+                    if (!Data[row, column].IsEmpty())
+                    {
+                        int newRow = row;
+                        int newColumn = column;
+                        int counterMoves = 0;
+                        // Looping until the next checked cell is valid and either empty or equal to the current cell
+                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
+                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
+                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        {
+                            newRow += rowLocationChange;
+                            newColumn += columnLocationChange;
+                            counterMoves++;
+                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
+                            {
+                                break;
+                            }
+                        }
+                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
+                        row += counterMoves;
+                    }
+                }
+            }
+            // adding new random cell
+            AddRandomNumber();
+            // after making changes in the board, update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
+            return pointsEarned;
+        }
+        private int MoveTilesRight(int rowLocationChange, int columnLocationChange)
+        {
+            int pointsEarned = 0;
+
+            for (int row = 0; row < BOARD_SIZE_ROW; row++)
+            {
+                for (int column = 0; column< BOARD_SIZE_COLUMN; column++)
+                {
+                    if (!Data[row, column].IsEmpty())
+                    {
+                        int newRow = row;
+                        int newColumn = column;
+                        int counterMoves = 0;
+
+                        // Looping until the next checked cell is valid and either empty or equal to the current cell
+                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
+                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
+                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        {
+                            newRow += rowLocationChange;
+                            newColumn += columnLocationChange;
+                            counterMoves++;
+                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
+                            {
+                                break;
+                            }
+                        }
+                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
+                        column += counterMoves;
+                    }
+                }
+            }
+            // adding new random cell
+            AddRandomNumber();
+            // after making changes in the board, update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
             return pointsEarned;
         }
 

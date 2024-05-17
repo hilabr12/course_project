@@ -34,24 +34,21 @@ namespace _2048.logic
         {
             return Value == EMPTY_CELL;
         }
-        public bool HasLeft()
+        
+        public bool IsValidPosition()
         {
-            return Column - 1 >= 0;
-        }
-        public bool HasRight()
-        {
-            return Column + 1 <= BOARD_SIZE_COLUMN-1 ;
-        }
-        public bool HasUp()
-        {
-            return Row - 1 >= 0;
-        }
-        public bool HasDown()
-        {
-            return Row + 1 <= BOARD_SIZE_ROW - 1;
+            return Row >= 0 && Row < BOARD_SIZE_ROW && Column >= 0 && Column < BOARD_SIZE_COLUMN;
         }
         
+        public void MakeEmpty()
+        {
+            Value = EMPTY_CELL;
+        }
 
+        public void MergeValue()
+        {
+            Value *= 2;
+        }
 
     }
 }

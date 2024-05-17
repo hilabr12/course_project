@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
 namespace _2048.logic
 {
     public class Board
     {
         internal const int BOARD_SIZE_ROW = 4;
+
         internal const int BOARD_SIZE_COLUMN = 4;
+
         public const int EMPTY_CELL = 0;
         public Cell[,] Data { get; protected set; }
+
         public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
         
         public List<Cell> EmptyCells { get; protected set; }
@@ -59,28 +63,23 @@ namespace _2048.logic
 
         public void InitializeBoard()
         {
-            // getting random int values for the first 2 cells
-            int firstRandomCellValue = GetRandomCellValue();
-            int secondRandomCellValue = GetRandomCellValue();
-
-            // getting a random place for the first cell
-            Cell firstRandomCell = GetRandomEmptyCell();
-
-            // setting the chosen random int value in the chosen random place
-            SetRandomCellValue(firstRandomCell, firstRandomCellValue);
-
-            // removing the firstRandomCell from the empty cells
-            EmptyCells.Remove(firstRandomCell);
-            
-            // getting a random place for the second cell
-            Cell secondRandomCell = GetRandomEmptyCell();
-
-            // setting the chosen random value in the chosen random place
-            SetRandomCellValue(secondRandomCell, secondRandomCellValue);
-
-            // removing the secondRandomCell from the empty cells
-            EmptyCells.Remove(secondRandomCell);
+            AddRandomNumber();
+            AddRandomNumber();
         }
+
+        public void AddRandomNumber()
+        {
+            // getting random value
+            int value = GetRandomCellValue();
+            // getting a random place for the cell
+            Cell cell = GetRandomEmptyCell();
+            // setting the chosen random int value in the chosen random place
+            SetRandomCellValue(cell, value);
+            // removing the cell from the empty cells list 
+            EmptyCells.Remove(cell);
+        }
+
+
 
         public void SetRandomCellValue(Cell chosenRandomCell, int chosenRandomCellValue)
         {
@@ -143,7 +142,6 @@ namespace _2048.logic
                     }
                 }
             }
-
             return pointsEarned;
         }
 
@@ -173,6 +171,7 @@ namespace _2048.logic
                     Data[newRow, newColumn].MergeValue();
                     Data[row, column].MakeEmpty();
                     pointsEarned += Data[newRow, newColumn].Value;
+
                 }
 
                 else
@@ -185,5 +184,25 @@ namespace _2048.logic
             }
             return pointsEarned;
         }
+
+        public bool IsThereAWinningCell()
+        {
+            for (int row = 0; row < Data.GetLength(0); row++)
+            {
+                for (int column = 0; column < Data.GetLength(1); column++)
+                {
+                    // if a cell is equal to 2048
+                    if (Data[row, column].IsWinning())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+
+
+
     }
 }

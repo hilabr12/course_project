@@ -2,6 +2,12 @@ NEW_LINE = "\n"
 
 
 def input_numbers() -> list[int]:
+    """
+    Prompts the user to input numbers until -1 is entered.
+
+    Returns:
+    list[int]: A list of numbers entered by the user.
+    """
     numbers: list[int] = []
     while True:
         try:
@@ -19,12 +25,29 @@ class Numbers:
         self.numbers: list[int] = input_numbers()
 
     def get_average(self) -> float:
+        """
+        Calculate the average of the entered numbers.
+
+        Returns:
+        float: The average of the entered numbers.
+        """
         return sum(self.numbers) / len(self.numbers)
 
     def get_amount_of_positive_numbers(self) -> int:
-        # adds the number 1 to the list whenever the current number is positive and then sums the list
+        """
+        Calculate the amount of positive numbers in the entered list.
+
+        Returns:
+        int: The count of positive numbers in the entered list.
+        """
         return sum(1 for number in self.numbers if number > 0)
 
     def get_sorted_numbers(self) -> list[int]:
+        """
+        Return a sorted list of the entered numbers.
+
+        Returns:
+        list[int]: A sorted list of the entered numbers.
+        """
         return sorted(self.numbers)
 

@@ -1,18 +1,25 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Policy;
 namespace _2048.logic
 {
     public class Board
-    { 
-        public Cell[,] Data { get; protected set; }
-        public List<Cell> EmptyCells { get; protected set; }
-        public static readonly int[] RandomValuesOptions = { 2, 4 };
-
+    {
         internal const int BoardSizeRow = 4;
-        internal const int BoardSizeColumn = 4;
-        public const int EmptyCell = 0;
 
+        internal const int BoardSizeColumn = 4;
+
+        public const int EMPTY_CELL = 0;
+        public Cell[,] Data { get; protected set; }
+
+        public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
+
+
+        public List<Cell> EmptyCells { get; protected set; }
 
         public Board()
         {
@@ -24,8 +31,7 @@ namespace _2048.logic
         public List<Cell> GetAllEmptyCells()
         {
             List<Cell> emptyCells = new List<Cell>();
-
-            for (int row = 0; row < BoardSizeRow; row++)
+            for (int row = 0; row < BoardSizeColumn; row++)
             {
                 for (int column = 0; column < BoardSizeColumn; column++)
                 {
@@ -42,14 +48,14 @@ namespace _2048.logic
 
         public Cell[,] SetAllBoardValuesAsEmpty()
         {
-            Cell[,] emptyBoard = new Cell[BoardSizeRow, BoardSizeColumn];
+            Cell[,] emptyBoard = new Cell[BoardSizeColumn, BoardSizeColumn];
 
             // setting all board values as EMPTY_CELL - 0
-            for (int row = 0; row < BoardSizeRow; row++)
+            for (int row = 0; row < BoardSizeColumn; row++)
             {
                 for (int column = 0; column < BoardSizeColumn; column++)
                 {
-                    Cell currentCell = new Cell(EmptyCell, row, column);
+                    Cell currentCell = new Cell(EMPTY_CELL, row, column);
                     emptyBoard[row, column] = currentCell;
                 }
             }
@@ -74,6 +80,8 @@ namespace _2048.logic
             EmptyCells.Remove(cell);
         }
 
+
+
         public void SetRandomCellValue(Cell chosenRandomCell, int chosenRandomCellValue)
         {
             Data[chosenRandomCell.Row, chosenRandomCell.Column].Value = chosenRandomCellValue;
@@ -82,7 +90,7 @@ namespace _2048.logic
         public int GetRandomCellValue()
         {
             Random rnd = new Random();
-            int randomCellValue = RandomValuesOptions.ElementAt(rnd.Next(RandomValuesOptions.Length));
+            int randomCellValue = RANDOM_VALUES_OPTIONS.ElementAt(rnd.Next(RANDOM_VALUES_OPTIONS.Length));
             return randomCellValue;
         }
         public Cell GetRandomEmptyCell()
@@ -98,7 +106,21 @@ namespace _2048.logic
             // returns true if there still empty cells , false if the game is over
             return EmptyCells.Count != 0;
         }
-
+        public bool IsThereAWinningCell()
+        {
+            for (int row = 0; row < Data.GetLength(0); row++)
+            {
+                for (int column = 0; column < Data.GetLength(1); column++)
+                {
+                    // if a cell is equal to 2048
+                    if (Data[row, column].IsWinning())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         public int Move(Direction direction)
         {
             int pointsEarned = 0;
@@ -106,16 +128,16 @@ namespace _2048.logic
             switch (direction)
             {
                 case Direction.Up:
-                    pointsEarned = MoveTilesUp(-1, 0);
+                    pointsEarned = MoveTilesUp();
                     break;
                 case Direction.Down:
-                    pointsEarned = MoveTilesDown(1, 0);
+                    pointsEarned = MoveTilesDown();
                     break;
                 case Direction.Left:
-                    pointsEarned = MoveTilesLeft(0, -1);
+                    pointsEarned = MoveTilesLeft();
                     break;
                 case Direction.Right:
-                    pointsEarned = MoveTilesRight(0, 1);
+                    pointsEarned = MoveTilesRight();
                     break;
             }
 
@@ -123,158 +145,120 @@ namespace _2048.logic
         }
 
 
-        private int MoveTilesUp(int rowLocationChange, int columnLocationChange)
+        private int MoveTilesUp()
         {
+
             int pointsEarned = 0;
 
-            for (int column = BoardSizeColumn - 1; column >= 0; column--)
+            for (int col = 0; col < BoardSizeColumn; col++)
             {
-                for (int row = BoardSizeRow - 1; row >= 0; row--)
+                for (int row = 1; row < BoardSizeRow; row++)
                 {
-                    if (!Data[row, column].IsEmpty())
+                    if (!Data[row, col].IsEmpty())
                     {
-                        int newRow = row;
-                        int newColumn = column;
-                        int counterMoves = 0;
-                        // Looping until the next checked cell is valid and either empty or equal to the current cell
-                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
-                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
-                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        int currentRow = row;
+                        while (currentRow > 0 
+                            && (Data[currentRow - 1, col].IsEmpty() 
+                            || (Data[currentRow - 1, col].Value == Data[row, col].Value 
+                            && !Data[currentRow - 1, col].HasBeenMerged)))
                         {
-                            newRow += rowLocationChange;
-                            newColumn += columnLocationChange;
-                            counterMoves++;
-                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
-                            {
-                                break;
-                            }
+                            currentRow--;
                         }
-                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
-                        row -= counterMoves;
+                        pointsEarned += MoveTileAndMerge(row, col, currentRow, col);
                     }
                 }
             }
-            // adding new random cell
-            AddRandomNumber();
-            // after making changes in the board, update the emptyCells list 
-            EmptyCells = GetAllEmptyCells();
+
+            AfterMergingTasks();
             return pointsEarned;
         }
 
-        private int MoveTilesDown(int rowLocationChange, int columnLocationChange)
+        private int MoveTilesDown()
         {
             int pointsEarned = 0;
 
-            for (int column = 0; column < BoardSizeColumn; column++)
+            for (int col = 0; col < BoardSizeColumn; col++)
             {
-                for (int row = 0; row < BoardSizeRow; row++)
+                for (int row = BoardSizeRow - 2; row >= 0; row--)
                 {
-                    if (!Data[row, column].IsEmpty())
+                    if (!Data[row, col].IsEmpty())
                     {
-                        int newRow = row;
-                        int newColumn = column;
-                        int counterMoves = 0;
-                        // Looping until the next checked cell is valid and either empty or equal to the current cell
-                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
-                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
-                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        int currentRow = row;
+                        while (currentRow < BoardSizeRow - 1 
+                            && (Data[currentRow + 1, col].IsEmpty() 
+                            || (Data[currentRow + 1, col].Value == Data[row, col].Value 
+                            && !Data[currentRow + 1, col].HasBeenMerged)))
                         {
-                            newRow += rowLocationChange;
-                            newColumn += columnLocationChange;
-                            counterMoves++;
-                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
-                            {
-                                break;
-                            }
+                            currentRow++;
                         }
-                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
-                        row += counterMoves;
+                        pointsEarned += MoveTileAndMerge(row, col, currentRow, col);
                     }
                 }
             }
-            // adding new random cell
-            AddRandomNumber();
-            // after making changes in the board, update the emptyCells list 
-            EmptyCells = GetAllEmptyCells();
+
+            AfterMergingTasks();
             return pointsEarned;
         }
-        private int MoveTilesRight(int rowLocationChange, int columnLocationChange)
+        private int MoveTilesRight()
         {
             int pointsEarned = 0;
 
             for (int row = 0; row < BoardSizeRow; row++)
             {
-                for (int column = 0; column < BoardSizeColumn; column++)
+                for (int col = BoardSizeColumn - 2; col >= 0; col--)
                 {
-                    if (!Data[row, column].IsEmpty())
+                    if (!Data[row, col].IsEmpty())
                     {
-                        int newRow = row;
-                        int newColumn = column;
-                        int counterMoves = 0;
-
-                        // Looping until the next checked cell is valid and either empty or equal to the current cell
-                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
-                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
-                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+                        int currentCol = col;
+                        while (currentCol < BoardSizeColumn - 1 
+                            && (Data[row, currentCol + 1].IsEmpty() 
+                            || (Data[row, currentCol + 1].Value == Data[row, col].Value 
+                            && !Data[row, currentCol + 1].HasBeenMerged)))
                         {
-                            newRow += rowLocationChange;
-                            newColumn += columnLocationChange;
-                            counterMoves++;
-                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
-                            {
-                                break;
-                            }
+                            currentCol++;
                         }
-                        pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
-                        column += counterMoves;
+                        // Move and possibly merge the tile
+                        pointsEarned += MoveTileAndMerge(row, col, row, currentCol);
                     }
                 }
             }
-            // adding new random cell
-            AddRandomNumber();
-            // after making changes in the board, update the emptyCells list 
-            EmptyCells = GetAllEmptyCells();
+
+            AfterMergingTasks();
             return pointsEarned;
         }
 
-        private int MoveTilesLeft(int rowLocationChange, int columnLocationChange)
+        private int MoveTilesLeft()
         {
             int pointsEarned = 0;
 
             for (int row = 0; row < Data.GetLength(0); row++)
             {
-                for (int column = BoardSizeColumn - 1; column >= 0; column--)
+                for (int column = 1; column < Data.GetLength(1); column++)
                 {
                     if (!Data[row, column].IsEmpty())
                     {
                         int newRow = row;
                         int newColumn = column;
-                        int counterMoves = 0;
-                        // Looping until the next checked cell is valid and either empty or equal to the current cell
-                        while (IsValidPosition(newRow + rowLocationChange, newColumn + columnLocationChange) &&
-                               (Data[newRow + rowLocationChange, newColumn + columnLocationChange].IsEmpty() ||
-                                Data[newRow + rowLocationChange, newColumn + columnLocationChange].Value == Data[row, column].Value))
+
+                        // Find the valid empty position or the position with the same value
+                        while (newColumn > 0 
+                            && (Data[newRow, newColumn - 1].IsEmpty() 
+                            || (Data[newRow, newColumn - 1].Value == Data[row, column].Value 
+                            && !Data[newRow, newColumn - 1].HasBeenMerged)))
                         {
-                            newRow += rowLocationChange;
-                            newColumn += columnLocationChange;
-                            counterMoves++;
-                            if (Data[newRow, newColumn].Value == Data[row, column].Value)
-                            {
-                                break;
-                            }
+                            newColumn--;
                         }
+
+                        // Move and possibly merge the tile
                         pointsEarned += MoveTileAndMerge(row, column, newRow, newColumn);
-                        column -= counterMoves;
                     }
                 }
             }
-            // adding new random cell
-            AddRandomNumber();
-            // after making changes in the board, update the emptyCells list 
-            EmptyCells = GetAllEmptyCells();
+
+            AfterMergingTasks();
+
             return pointsEarned;
         }
-
 
         private int MoveTileAndMerge(int row, int column, int newRow, int newColumn)
         {
@@ -302,25 +286,31 @@ namespace _2048.logic
             return pointsEarned;
         }
 
-        public bool IsValidPosition(int row, int column)
+        public void AfterMergingTasks()
         {
-            return row >= 0 && row < BoardSizeRow && column >= 0 && column < BoardSizeColumn;
+            // Update the emptyCells list 
+            EmptyCells = GetAllEmptyCells();
+            //Add Random Number
+            AddRandomNumber();
+            // Reset Has Been Merged Flag For All Cells
+            ResetHasBeenMergedFlagForAllCells();
         }
-        public bool IsThereAWinningCell()
+
+
+        public void ResetHasBeenMergedFlagForAllCells()
         {
+            // Reset the HasBeenMerged flag for all cells
             for (int row = 0; row < Data.GetLength(0); row++)
             {
                 for (int column = 0; column < Data.GetLength(1); column++)
                 {
-                    // if a cell is equal to 2048
-                    if (Data[row, column].IsWinning())
-                    {
-                        return true;
-                    }
+                    Data[row, column].HasBeenMerged = false;
                 }
             }
-            return false;
         }
+
+        
+        
 
     }
 }

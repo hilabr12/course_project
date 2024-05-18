@@ -12,20 +12,57 @@ public class ConsoleGame
     public void PrintBoard()
     {
         Console.Clear();
+        Console.WriteLine("Welcome to 2048 Game!");
+        Console.WriteLine();
         Cell[,] boardData = _game.Board.Data;
         for (int row = 0; row < Board.BoardSizeRow; row++)
 
         {
             for (int col = 0; col < Board.BoardSizeColumn; col++)
             {
-                Console.Write(boardData[row, col].Value.ToString() + " ");
+                Console.ForegroundColor = GetNumberColor((ulong)boardData[row, col].Value);
+                Console.Write(string.Format("{0,8}", boardData[row, col].Value));
             }
             Console.WriteLine("");
+        }
+        Console.ResetColor(); // Reset console color to default
+
+
+    }
+    private static ConsoleColor GetNumberColor(ulong number)
+    {
+        switch (number)
+        {
+            case 0:
+                return ConsoleColor.DarkGray;
+            case 2:
+                return ConsoleColor.Cyan;
+            case 4:
+                return ConsoleColor.Magenta;
+            case 8:
+                return ConsoleColor.Red;
+            case 16:
+                return ConsoleColor.Green;
+            case 32:
+                return ConsoleColor.Yellow;
+            case 64:
+                return ConsoleColor.Yellow;
+            case 128:
+                return ConsoleColor.DarkCyan;
+            case 256:
+                return ConsoleColor.Cyan;
+            case 512:
+                return ConsoleColor.DarkMagenta;
+            case 1024:
+                return ConsoleColor.Magenta;
+            default:
+                return ConsoleColor.Red;
         }
     }
 
     public Direction InputMove()
     {
+        Console.WriteLine();
         Console.WriteLine("Please Press an Arrow Key :");
         var key = Console.ReadKey().Key;
         Console.WriteLine(key);
@@ -48,6 +85,7 @@ public class ConsoleGame
 
     public void Play()
     {
+        
         while (_game.Status == GameStatus.Idle)
         {
             PrintBoard();

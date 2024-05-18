@@ -9,6 +9,9 @@ public class ConsoleGame
         _game = new Game();
     }
 
+    /// <summary>
+    /// Clears the console, prints the welcome message, and displays the current state of the game board with appropriate colors for each tile value.
+    /// </summary>
     public void PrintBoard()
     {
         Console.Clear();
@@ -29,6 +32,11 @@ public class ConsoleGame
 
 
     }
+    /// <summary>
+    /// Gets the console color corresponding to the specified number value.
+    /// </summary>
+    /// <param name="number">The number value for which to determine the console color.</param>
+    /// <returns>The ConsoleColor corresponding to the specified number value.</returns>
     private static ConsoleColor GetNumberColor(ulong number)
     {
         switch (number)
@@ -59,7 +67,10 @@ public class ConsoleGame
                 return ConsoleColor.Red;
         }
     }
-
+    /// <summary>
+    /// Prompts the user to input a move direction using arrow keys and returns the corresponding direction.
+    /// </summary>
+    /// <returns>The direction input by the user.</returns>
     public Direction InputMove()
     {
         Console.WriteLine();
@@ -82,10 +93,12 @@ public class ConsoleGame
         }
         return Direction.Right;
     }
-
+    /// <summary>
+    /// Begins the game loop, allowing the player to make moves until the game ends, and displays the game status after the game ends.
+    /// </summary>
     public void Play()
     {
-        
+
         while (_game.Status == GameStatus.Idle)
         {
             PrintBoard();

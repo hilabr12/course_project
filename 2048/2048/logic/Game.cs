@@ -13,6 +13,11 @@
             this.Points = 0;
         }
 
+        /// <summary>
+        /// Attempts to move the tiles on the board in the specified direction, updates the game status and points accordingly,
+        /// and checks if the player has won or lost.
+        /// </summary>
+        /// <param name="direction">The direction in which to move the tiles.</param>
         public void Move(Direction direction)
         {
             if (Status != GameStatus.Lose)

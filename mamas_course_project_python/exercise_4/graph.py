@@ -17,12 +17,12 @@ def create_graph(numbers: list[int]):
 
     x = np.array(input_order)
     y = np.array(numbers)
-    fig,ax = plt.subplots()
+    fig, ax = plt.subplots()
 
     ax.set_xlabel('Input order')
     ax.set_ylabel('Numbers')
 
     ax.set_title('Numbers according to order')
-    plt.scatter(x,y,color='hotpink')
+    plt.scatter(x, y, color='hotpink')
     plt.show()
-    print_pearson(input_order,numbers)
+    print_pearson(input_order, numbers)

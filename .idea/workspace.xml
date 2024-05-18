@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba3f131f-8c84-43b5-b365-b62ec9261567" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mamas_course_project_python/number_length.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mamas_course_project_python/pythagorean_triplet_by_sum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/.vs/2048/FileContentIndex/63df0cdb-b823-4b10-86da-d255ae991112.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/.vs/2048/FileContentIndex/fde5a9e9-5089-4027-8775-93207c51cae9.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/.vs/2048/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/2048/.vs/2048/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/.vs/2048/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/2048/.vs/2048/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/2048/bin/Debug/2048.exe" beforeDir="false" afterPath="$PROJECT_DIR$/2048/2048/bin/Debug/2048.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/2048/bin/Debug/2048.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/2048/2048/bin/Debug/2048.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/2048/obj/Debug/2048.exe" beforeDir="false" afterPath="$PROJECT_DIR$/2048/2048/obj/Debug/2048.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2048/2048/obj/Debug/2048.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/2048/2048/obj/Debug/2048.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

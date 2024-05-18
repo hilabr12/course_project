@@ -1,8 +1,4 @@
-﻿using _2048.logic;
-using System;
-using System.Runtime.InteropServices;
-
-namespace _2048
+﻿namespace _2048
 {
     public class Program
     {

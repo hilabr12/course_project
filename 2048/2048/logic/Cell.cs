@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace _2048.logic
+﻿namespace _2048.logic
 {
     public class Cell
     {
@@ -8,16 +6,9 @@ namespace _2048.logic
         public int Row { get; set; }
         public int Column { get; set; }
 
-        internal const int BOARD_SIZE_ROW = 4;
+        public const int EmptyCell = 0;
 
-        internal const int BOARD_SIZE_COLUMN = 4;
-
-        public const int EMPTY_CELL = 0;
-
-        public const int WINNING_CELL = 2048;
-
-        public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
-
+        public const int WinningCell = 2048;
 
         public Cell(int value, int row, int column)
         {
@@ -28,17 +19,17 @@ namespace _2048.logic
 
         public bool IsWinning()
         {
-            return Value == WINNING_CELL;
+            return Value == WinningCell;
         }
         public bool IsEmpty()
         {
-            return Value == EMPTY_CELL;
+            return Value == EmptyCell;
         }
-       
-        
+
+
         public void MakeEmpty()
         {
-            Value = EMPTY_CELL;
+            Value = EmptyCell;
         }
 
         public void MergeValue()

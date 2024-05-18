@@ -13,12 +13,12 @@ public class ConsoleGame
     {
         Console.Clear();
         Cell[,] boardData = _game.Board.Data;
-        for (int row = 0; row < Board.BOARD_SIZE_ROW; row++)
+        for (int row = 0; row < Board.BoardSizeRow; row++)
 
         {
-            for (int col = 0; col < Board.BOARD_SIZE_COLUMN; col++)
+            for (int col = 0; col < Board.BoardSizeColumn; col++)
             {
-                Console.Write(boardData[row,col].Value.ToString() + " ");
+                Console.Write(boardData[row, col].Value.ToString() + " ");
             }
             Console.WriteLine("");
         }
@@ -51,7 +51,7 @@ public class ConsoleGame
         while (_game.Status == GameStatus.Idle)
         {
             PrintBoard();
-            _game.Move(InputMove()); 
+            _game.Move(InputMove());
         }
         if (_game.Status == GameStatus.Win)
         {

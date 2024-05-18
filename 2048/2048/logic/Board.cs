@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Policy;
 namespace _2048.logic
 {
     public class Board
-    {
-        internal const int BOARD_SIZE_ROW = 4;
-
-        internal const int BOARD_SIZE_COLUMN = 4;
-
-        public const int EMPTY_CELL = 0;
+    { 
         public Cell[,] Data { get; protected set; }
-
-        public static readonly int[] RANDOM_VALUES_OPTIONS = { 2, 4 };
-
-        
         public List<Cell> EmptyCells { get; protected set; }
+        public static readonly int[] RandomValuesOptions = { 2, 4 };
+
+        internal const int BoardSizeRow = 4;
+        internal const int BoardSizeColumn = 4;
+        public const int EmptyCell = 0;
+
 
         public Board()
         {
@@ -31,9 +24,10 @@ namespace _2048.logic
         public List<Cell> GetAllEmptyCells()
         {
             List<Cell> emptyCells = new List<Cell>();
-            for (int row = 0; row < BOARD_SIZE_ROW; row++)
+
+            for (int row = 0; row < BoardSizeRow; row++)
             {
-                for(int column = 0; column < BOARD_SIZE_COLUMN; column++)
+                for (int column = 0; column < BoardSizeColumn; column++)
                 {
                     Cell currentCell = Data[row, column];
                     // if the current cell is empty then we add it to the list of empty cells
@@ -48,14 +42,14 @@ namespace _2048.logic
 
         public Cell[,] SetAllBoardValuesAsEmpty()
         {
-            Cell[,] emptyBoard = new Cell[BOARD_SIZE_ROW,BOARD_SIZE_COLUMN];
+            Cell[,] emptyBoard = new Cell[BoardSizeRow, BoardSizeColumn];
 
             // setting all board values as EMPTY_CELL - 0
-            for (int row = 0; row < BOARD_SIZE_ROW; row++)
+            for (int row = 0; row < BoardSizeRow; row++)
             {
-                for (int column = 0; column < BOARD_SIZE_COLUMN; column++)
+                for (int column = 0; column < BoardSizeColumn; column++)
                 {
-                    Cell currentCell = new Cell(EMPTY_CELL, row, column);
+                    Cell currentCell = new Cell(EmptyCell, row, column);
                     emptyBoard[row, column] = currentCell;
                 }
             }
@@ -80,8 +74,6 @@ namespace _2048.logic
             EmptyCells.Remove(cell);
         }
 
-
-
         public void SetRandomCellValue(Cell chosenRandomCell, int chosenRandomCellValue)
         {
             Data[chosenRandomCell.Row, chosenRandomCell.Column].Value = chosenRandomCellValue;
@@ -90,7 +82,7 @@ namespace _2048.logic
         public int GetRandomCellValue()
         {
             Random rnd = new Random();
-            int randomCellValue = RANDOM_VALUES_OPTIONS.ElementAt(rnd.Next(RANDOM_VALUES_OPTIONS.Length));
+            int randomCellValue = RandomValuesOptions.ElementAt(rnd.Next(RandomValuesOptions.Length));
             return randomCellValue;
         }
         public Cell GetRandomEmptyCell()
@@ -126,7 +118,7 @@ namespace _2048.logic
                     pointsEarned = MoveTilesRight(0, 1);
                     break;
             }
-            
+
             return pointsEarned;
         }
 
@@ -135,9 +127,9 @@ namespace _2048.logic
         {
             int pointsEarned = 0;
 
-            for (int column = BOARD_SIZE_COLUMN - 1; column >= 0; column--)
+            for (int column = BoardSizeColumn - 1; column >= 0; column--)
             {
-                for (int row = BOARD_SIZE_ROW - 1; row >= 0; row--)
+                for (int row = BoardSizeRow - 1; row >= 0; row--)
                 {
                     if (!Data[row, column].IsEmpty())
                     {
@@ -173,9 +165,9 @@ namespace _2048.logic
         {
             int pointsEarned = 0;
 
-            for (int column = 0; column < BOARD_SIZE_COLUMN; column++)
+            for (int column = 0; column < BoardSizeColumn; column++)
             {
-                for (int row = 0; row < BOARD_SIZE_ROW; row++)
+                for (int row = 0; row < BoardSizeRow; row++)
                 {
                     if (!Data[row, column].IsEmpty())
                     {
@@ -210,9 +202,9 @@ namespace _2048.logic
         {
             int pointsEarned = 0;
 
-            for (int row = 0; row < BOARD_SIZE_ROW; row++)
+            for (int row = 0; row < BoardSizeRow; row++)
             {
-                for (int column = 0; column< BOARD_SIZE_COLUMN; column++)
+                for (int column = 0; column < BoardSizeColumn; column++)
                 {
                     if (!Data[row, column].IsEmpty())
                     {
@@ -251,9 +243,9 @@ namespace _2048.logic
 
             for (int row = 0; row < Data.GetLength(0); row++)
             {
-                for (int column = BOARD_SIZE_COLUMN-1;  column >= 0 ; column--)
+                for (int column = BoardSizeColumn - 1; column >= 0; column--)
                 {
-                    if (!Data[row, column].IsEmpty()) 
+                    if (!Data[row, column].IsEmpty())
                     {
                         int newRow = row;
                         int newColumn = column;
@@ -312,7 +304,7 @@ namespace _2048.logic
 
         public bool IsValidPosition(int row, int column)
         {
-            return row >= 0 && row < BOARD_SIZE_ROW && column >= 0 && column < BOARD_SIZE_COLUMN;
+            return row >= 0 && row < BoardSizeRow && column >= 0 && column < BoardSizeColumn;
         }
         public bool IsThereAWinningCell()
         {

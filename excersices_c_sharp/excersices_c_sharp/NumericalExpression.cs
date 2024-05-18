@@ -19,28 +19,47 @@ namespace excersices_c_sharp
         }
         public override string ToString()
         {
+            ///<summary>
+            /// overrides the default ToString method to return the number as words
+            ///</summary>
+            /// <returns>A string representation of the number in words.</returns>
             return Number.ToWords(new CultureInfo("en-US"));
         }
+
         public long GetValue()
         {
+            ///<summary>
+            /// gets the numeric value represented by the expression
+            ///</summary>
+            /// <returns>The numeric value.</returns>
             return Number;
         }
 
         public static long SumLetters(int number)
         {
+            ///<summary>
+            /// Calculates the total number of letters used to write out the numbers from 1 to the given number
+            ///</summary>
+            /// <param name="number">The upper limit of the range.</param>
+            /// <returns>The total number of letters used.</returns>
             long counterOfLetters = 0;
-            for(long currentNumber = 1; currentNumber <= number; currentNumber++)
+            for (long currentNumber = 1; currentNumber <= number; currentNumber++)
             {
-                
                 NumericalExpression expression = new NumericalExpression(currentNumber);
                 string currentNumberAsWord = expression.ToString().Trim();
                 counterOfLetters += currentNumberAsWord.Length;
             }
             return counterOfLetters;
         }
-        //Method Overloading
+
+        // Method Overloading
         public static long SumLetters(NumericalExpression expression)
         {
+            ///<summary>
+            /// Calculates the total number of letters used to write out the numbers from 1 to the numeric value of the given expression
+            ///</summary>
+            /// <param name="expression">The numerical expression.</param>
+            /// <returns>The total number of letters used.</returns>
             long counterOfLetters = 0;
             for (long currentNumber = 1; currentNumber <= expression.GetValue(); currentNumber++)
             {
@@ -50,6 +69,7 @@ namespace excersices_c_sharp
             }
             return counterOfLetters;
         }
+
 
 
 

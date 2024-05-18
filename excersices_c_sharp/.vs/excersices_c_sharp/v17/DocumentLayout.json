@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\repos\\excersices_c_sharp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\numericalexpression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\numericalexpression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\linkedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|c:\\repos\\excersices_c_sharp\\excersices_c_sharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E23F5CE8-DCCE-4FDC-B81B-FC66B10C523E}|excersices_c_sharp\\excersices_c_sharp.csproj|solutionrelative:excersices_c_sharp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Program.cs",
+              "RelativeDocumentMoniker": "excersices_c_sharp\\Program.cs",
+              "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Program.cs",
+              "RelativeToolTip": "excersices_c_sharp\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T14:34:35.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Node.cs",
+              "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Node.cs",
+              "RelativeDocumentMoniker": "excersices_c_sharp\\Node.cs",
+              "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\Node.cs",
+              "RelativeToolTip": "excersices_c_sharp\\Node.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T14:34:28.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "NumericalExpression.cs",
               "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\NumericalExpression.cs",
               "RelativeDocumentMoniker": "excersices_c_sharp\\NumericalExpression.cs",
               "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\NumericalExpression.cs",
               "RelativeToolTip": "excersices_c_sharp\\NumericalExpression.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAowDUAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAkwE0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T10:24:00.754Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LinkedList.cs",
               "DocumentMoniker": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\LinkedList.cs",
               "RelativeDocumentMoniker": "excersices_c_sharp\\LinkedList.cs",
               "ToolTip": "C:\\repos\\excersices_c_sharp\\excersices_c_sharp\\LinkedList.cs",
               "RelativeToolTip": "excersices_c_sharp\\LinkedList.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAALwAAAABAAAA",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAkwKYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-12T16:36:04.892Z",
               "EditorCaption": ""
